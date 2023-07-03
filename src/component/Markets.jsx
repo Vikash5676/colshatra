@@ -9,9 +9,9 @@ const Markets = () => {
   const [userSelected, setUserSelected] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [filters, setFilters] = useState({
-    currency: "Currency",
-    pm: "Payment Methods",
-    ld: "Lifting Days",
+    currency: false,
+    pm: false,
+    ld: false,
   });
 
   const handleFilterChange = (event) => {
@@ -59,7 +59,7 @@ const Markets = () => {
               <select
                 name="currency"
                 id="currency"
-                value={filters.currency}
+                // value={filters.currency}
                 onChange={handleFilterChange}
                 className="w-full border-[1px] text-[0.8rem] opacity-70 font-semibold"
               >
@@ -79,7 +79,7 @@ const Markets = () => {
                 name="pm"
                 id="pm"
                 onChange={handleFilterChange}
-                value={filters.pm}
+                // value={filters.pm}
                 className="w-full border-[1px] text-[0.8rem] opacity-70 font-semibold"
               >
                 <option selected disabled>
@@ -99,17 +99,18 @@ const Markets = () => {
                 type="text"
                 className="w-full border-[1px] text-[0.8rem] opacity-70 font-semibold"
                 name="ld"
-                value={filters.ld}
+                // value={filters.ld}
                 onChange={handleFilterChange}
+                placeholder="Lifting Days"
               />
             </div>
             <div
               className="filter_items text-sky-600 hover:cursor-pointer text-[0.8rem] font-semibold"
               onClick={() => {
                 setFilters({
-                  currency: "Currency",
-                  pm: "Payment Methods",
-                  ld: "Lifting Days",
+                  currency: false,
+                  pm: false,
+                  ld: false,
                 });
               }}
             >
@@ -143,7 +144,7 @@ const Markets = () => {
                 ))}
           </div>
           <div className="min-h-[70vh] my-10 md:w-[50%] w-full ">
-            <BuyerSellerCard dataData={userSelected} />
+            <BuyerSellerCard dataData={userSelected} filterValue={filters.ld} />
             <Form />
           </div>
         </div>
